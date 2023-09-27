@@ -7,6 +7,8 @@ namespace TiendaAPI.Context
     {
         public DbSet<Cliente> Clientes { get; set; }
 
+        public DbSet<Venta> Ventas { get; set; }
+
         public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base (options)
         {
 

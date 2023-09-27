@@ -2,9 +2,10 @@
 using TiendaAPI.DTOs;
 using TiendaAPI.Entities;
 
+
 namespace TiendaAPI.Mappings
 {
-    public class MappingsProfiles : Profile
+    public class MappingsProfiles
     {
         public MappingsProfiles() {
 
