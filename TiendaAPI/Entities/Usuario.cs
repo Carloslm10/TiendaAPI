@@ -10,7 +10,7 @@ namespace TiendaAPI.Entities
         public string Clave { get; set; }
         public string Rol { get; set; }
 
-        //public ICollection<Venta> Venta { get; set; }
+        public ICollection<Venta> Venta { get; set; }
 
     }
 }
