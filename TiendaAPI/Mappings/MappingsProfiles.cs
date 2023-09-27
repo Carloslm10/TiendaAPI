@@ -5,7 +5,7 @@ using TiendaAPI.Entities;
 
 namespace TiendaAPI.Mappings
 {
-    public class MappingsProfiles
+    public class MappingsProfiles : Profile
     {
         public MappingsProfiles() {
 
