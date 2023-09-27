@@ -19,7 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(o => {
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-//builder.Services.AddScoped<ICliente, ClienteRepository>();
+//Repositorio para intanciar un servicio o inyectarlo dentro de los empoitns
+builder.Services.AddScoped<ICliente, ClienteRepository>();
 
 var app = builder.Build();
 
