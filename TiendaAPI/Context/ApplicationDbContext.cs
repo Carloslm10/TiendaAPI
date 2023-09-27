@@ -1,6 +1,15 @@
-﻿namespace TiendaAPI.Context
+﻿using Microsoft.EntityFrameworkCore;
+using TiendaAPI.Entities;
+
+namespace TiendaAPI.Context
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
+        public DbSet<Cliente> Clientes { get; set; }
+
+        public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base (options)
+        {
+
+        }
     }
 }
