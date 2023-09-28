@@ -5,6 +5,7 @@
         public static void UseEndpointd(this WebApplication app)
         {
             ClienteEndpoints.Add(app);
+            VentaEndpoints.Add(app);
         }
     }
 }
