@@ -13,11 +13,13 @@ namespace TiendaAPI.Mappings
             CreateMap<Cliente, ClienteDTO>();
             CreateMap<Usuario, UsuarioDTO>();
             CreateMap<Venta, VentaDTO>();
+            CreateMap<Producto, ProductoDTO>();
 
             //DTO a Entidad
             CreateMap<ClienteDTO, Cliente>();
             CreateMap<UsuarioDTO, Usuario>();
             CreateMap<VentaDTO, Venta>();
+            CreateMap<ProductoDTO, Producto>();
         }
     }
 }
