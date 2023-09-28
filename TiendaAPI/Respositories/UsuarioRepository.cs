@@ -48,7 +48,7 @@ namespace TiendaAPI.Respositories
 
         public async Task<UsuarioDTO> Usuario(int id)
         {
-            var entidad = await _db.Usuarios.ToListAsync();
+            var entidad = await _db.Usuarios.FindAsync(id);
             var usuario = _mapper.Map<Usuario, UsuarioDTO>(entidad);
 
             return usuario;
