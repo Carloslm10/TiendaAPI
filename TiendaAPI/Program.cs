@@ -22,6 +22,8 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //Repositorio para intanciar un servicio o inyectarlo dentro de los empoitns
 builder.Services.AddScoped<ICliente, ClienteRepository>();
 
+builder.Services.AddScoped<IVenta, VentaRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

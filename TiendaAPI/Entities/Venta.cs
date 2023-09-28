@@ -6,18 +6,18 @@ namespace TiendaAPI.Entities
     public class Venta
     {
         [Key]
-        private int Id { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey(nameof(Usuario))]
-        private int Usuario_id { get; set; }
+        public int Usuario_id { get; set; }
 
         [ForeignKey(nameof(Cliente))]
-        private int Cliete_id { get; set; }
+        public int Cliente_id { get; set; }
 
         [ForeignKey(nameof(Producto))]
-        private int Producto_id {get; set;}
-        private int Cantidad { get; set; }
-        private DateTime Fecha { get; set; }
+        public int Producto_id {get; set;}
+        public int Cantidad { get; set; }
+        public DateTime Fecha { get; set; }
 
         public Usuario Usuario { get; set; }
         public Cliente Cliente { get; set; }

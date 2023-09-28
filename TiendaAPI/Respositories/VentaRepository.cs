@@ -38,15 +38,31 @@ namespace TiendaAPI.Respositories
             return await _db.SaveChangesAsync();
         }
 
-        public Task<int> Modificar(int id, VentaDTO venta)
+        public async Task<int> Modificar(int id, VentaDTO venta)
         {
-            throw new NotImplementedException();
-        }
+            var entidad = await _db.Ventas.FindAsync(id);
+            if (entidad == null)
+                return 0;
 
+            entidad.Usuario_id = venta.Usuario_id;
+            entidad.Cliente_id = venta.Cliente_id;
+            entidad.Producto_id = venta.Producto_id;
+            entidad.Cantidad = venta.Cantidad;
+            entidad.Fecha = venta.Fecha;
+
+            _db.Ventas.Update(entidad);
+
+            return await Guardar();
+        }
+            
         public async Task<VentaDTO> Venta(int id)
         {
             var entidad = await _db.Ventas
-                .Where(x => x.Id
+                .Where(x => x.Id == id).Include(x => x.Usuario).Include(x => x.Cliente)
+                .Include(x => x.Producto).FirstOrDefaultAsync();
+
+            var venta = _mapper.Map<Venta, VentaDTO>(entidad);
+            return venta;
         }
 
         public async Task<ICollection<VentaDTO>> Ventas()
