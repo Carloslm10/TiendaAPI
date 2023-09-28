@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using TiendaAPI.Context;
 using TiendaAPI.DTOs;
+using TiendaAPI.Entities;
 using TiendaAPI.Respositories.Interfaces;
 
 namespace TiendaAPI.Respositories
@@ -44,14 +46,20 @@ namespace TiendaAPI.Respositories
             return await Guardar();
         }
 
-        public Task<UsuarioDTO> Usuario(int id)
+        public async Task<UsuarioDTO> Usuario(int id)
         {
-            throw new NotImplementedException();
+            var entidad = await _db.Usuarios.ToListAsync();
+            var usuario = _mapper.Map<Usuario, UsuarioDTO>(entidad);
+
+            return usuario;
         }
 
-        public Task<ICollection<UsuarioDTO>> Usuarios()
+        public async Task<ICollection<UsuarioDTO>> Usuarios()
         {
-            throw new NotImplementedException();
+            var entidades = await _db.Usuarios.ToListAsync();
+            var usuarios = _mapper.Map<ICollection<Usuario>, ICollection<UsuarioDTO>>(entidades);
+
+            return usuarios;
         }
     }
 }
