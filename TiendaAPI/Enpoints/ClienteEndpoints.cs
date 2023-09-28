@@ -12,7 +12,7 @@ namespace TiendaAPI.Enpoints
                 //codigo 200 es Ok - Significa la sulicitud se realizo correctamente
                 //y se debuelve una lista
                 return Results.Ok(cliente);
-            }).WithTags("Clientes");
+            }).WithTags("Clientes").AllowAnonymous();
 
             app.MapGet("api/clientes/{id}", async (int id, ICliente _cliente) => {
                 var cliente = await _cliente.Cliente(id);
@@ -22,7 +22,7 @@ namespace TiendaAPI.Enpoints
                 else
                     //codigo 200 es Ok - Significa la sulicitud se realizo correctamente
                     return Results.Ok(cliente);
-            }).WithTags("Clientes");
+            }).WithTags("Clientes").RequireAuthorization();
 
             app.MapPost("api/cliente", async(ClienteDTO cliente, ICliente _cliente) => {
                 if (cliente == null)
@@ -34,7 +34,7 @@ namespace TiendaAPI.Enpoints
                 //201 Created El recurso se creo con exito y se devuelve la ubicacion del
                 //recurso creado
                 return Results.Created("api/clientes/{cliente.Id}", cliente);
-            }).WithTags("Clientes");
+            }).WithTags("Clientes").RequireAuthorization();
 
             app.MapPut("api/cliente/{id}", async (int id, ClienteDTO cliente, ICliente _cliente) =>
             {
@@ -43,7 +43,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.Ok(resultado);
-            }).WithTags("Clientes");
+            }).WithTags("Clientes").RequireAuthorization();
 
             app.MapDelete("api/cliente/{id}", async (int id, ICliente _cliente) =>
             {
@@ -52,7 +52,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.NoContent(); //codigo 204 No Content - Recurso eliminado
-            }).WithTags("Clientes");
+            }).WithTags("Clientes").RequireAuthorization();
         }
     }
 }

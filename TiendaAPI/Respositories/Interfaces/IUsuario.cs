@@ -16,5 +16,7 @@ namespace TiendaAPI.Respositories.Interfaces
         Task<int> Eliminar(int id);
         //Guardar un dato nuevo
         Task<int> Guardar();
+        Task <UsuarioDTO> Login(UsuarioLogin login);
+        String GenerarToken(UsuarioDTO usuario);
     }
 }

@@ -12,7 +12,7 @@ namespace TiendaAPI.Enpoints
                 //codigo 200 es Ok - Significa la sulicitud se realizo correctamente
                 //y se debuelve una lista
                 return Results.Ok(venta);
-            }).WithTags("Ventas");
+            }).WithTags("Ventas").AllowAnonymous();
 
             app.MapGet("api/ventas/{id}", async (int id, IVenta _venta) => {
                 var venta = await _venta.Venta(id);
@@ -22,7 +22,7 @@ namespace TiendaAPI.Enpoints
                 else
                     //codigo 200 es Ok - Significa la sulicitud se realizo correctamente
                     return Results.Ok(venta);
-            }).WithTags("Ventas");
+            }).WithTags("Ventas").RequireAuthorization();
 
             app.MapPost("api/venta", async (VentaDTO venta, IVenta _venta) => {
                 if (venta == null)
@@ -34,7 +34,7 @@ namespace TiendaAPI.Enpoints
                 //201 Created El recurso se creo con exito y se devuelve la ubicacion del
                 //recurso creado
                 return Results.Created("api/ventas/{venta.Id}", venta);
-            }).WithTags("Ventas");
+            }).WithTags("Ventas").RequireAuthorization();
 
             app.MapPut("api/venta/{id}", async (int id, VentaDTO venta, IVenta _venta) =>
             {
@@ -43,7 +43,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.Ok(resultado);
-            }).WithTags("Ventas");
+            }).WithTags("Ventas").RequireAuthorization();
 
             app.MapDelete("api/venta/{id}", async (int id, IVenta _venta) =>
             {
@@ -52,7 +52,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.NoContent(); //codigo 204 No Content - Recurso eliminado
-            }).WithTags("Ventas");
+            }).WithTags("Ventas").RequireAuthorization();
         }
     }
 }

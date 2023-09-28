@@ -13,7 +13,7 @@ namespace TiendaAPI.Enpoints
                 var usuario = await _usuario.Usuarios();
 
                 return Results.Ok();
-            }).WithTags("Usuarios");
+            }).WithTags("Usuarios").AllowAnonymous();
 
             //Buscar por ID
             app.MapGet("api/usuarios/{id}", async (int id, IUsuario _usuario) =>
@@ -23,7 +23,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else 
                     return Results.Ok(usuario);
-            }).WithTags("Usuarios");
+            }).WithTags("Usuarios").RequireAuthorization();
 
             //Agregar un nuevo registro
             app.MapPost("api/usuario", async (UsuarioDTO usuario, IUsuario _usuario) =>
@@ -34,7 +34,7 @@ namespace TiendaAPI.Enpoints
                 await _usuario.Crear(usuario);
 
                 return Results.Created("api/usuarios/{usuario.Id}", usuario);
-            });
+            }).WithTags("Usuarios").RequireAuthorization();
 
             //Modificar un registro
             app.MapPut("api/usuario/{id}", async (int id, UsuarioDTO usuario, IUsuario _usuario) =>
@@ -44,7 +44,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.Ok(resultado);
-            }).WithTags("Usuarios");
+            }).WithTags("Usuarios").RequireAuthorization();
 
             //Eliminar un registro
             app.MapDelete("api/usuario/{id}", async (int id, IUsuario _usuario) =>
@@ -54,6 +54,26 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.NoContent();
+            }).WithTags("Usuarios").RequireAuthorization();
+
+            app.MapPost("api/login", async (UsuarioLogin usuario, IUsuario _usuario) => {
+                var login = await _usuario.Login(usuario);
+
+                if (login == null)
+                    return Results.NotFound(new { mensaje = "Usuario o contraseña incorecto" });
+
+                var token = _usuario.GenerarToken(login);
+
+                login.Clave = String.Empty;
+
+                if (String.IsNullOrEmpty(token))
+                {
+                    return Results.Unauthorized();
+                }
+                else
+                {
+                    return Results.Ok(token);
+                }
             }).WithTags("Usuarios");
         }
     }
