@@ -11,6 +11,8 @@ namespace TiendaAPI.Context
 
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Producto> Productos { get; set; }
+
         public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base (options)
         {
 
