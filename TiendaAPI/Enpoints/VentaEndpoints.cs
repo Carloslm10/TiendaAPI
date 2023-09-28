@@ -7,7 +7,7 @@ namespace TiendaAPI.Enpoints
     {
         public static async void Add(this WebApplication app)
         {
-            app.MapGet("api/venta", async (IVenta _venta) => {
+            app.MapGet("api/ventas", async (IVenta _venta) => {
                 var venta = await _venta.Ventas();
                 //codigo 200 es Ok - Significa la sulicitud se realizo correctamente
                 //y se debuelve una lista
