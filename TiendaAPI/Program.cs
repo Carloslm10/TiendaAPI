@@ -25,7 +25,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(o => {
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //Repositorio para intanciar un servicio o inyectarlo dentro de los empoitns
 builder.Services.AddScoped<ICliente, ClienteRepository>();
+builder.Services.AddScoped<IUsuario, UsuarioRepository>();
 builder.Services.AddScoped<IVenta, VentaRepository>();
+builder.Services.AddScoped<IProducto, ProductoRepository>();
+builder.Services.AddScoped<IMarca, MarcaRepository>();
+builder.Services.AddScoped<ICategoria, CategoriaRepository>();
+
 
 
 builder.Services.Configure<TokenSetting>(builder.Configuration.GetSection("TokenSetting"));

@@ -7,6 +7,8 @@
             ClienteEndpoints.Add(app);
             VentaEndpoints.Add(app);
             UsuarioEndpoints.Add(app);
+            MarcaEndpoints.Add(app);
+            CategoriaEndpoints.Add(app);
         }
     }
 }

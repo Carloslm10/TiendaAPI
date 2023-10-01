@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TiendaAPI.Entities
 {
     public class Producto
     {
+        [Key]
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
@@ -17,5 +19,7 @@ namespace TiendaAPI.Entities
 
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
+
+        public ICollection<Venta> Ventas { get; set; }
     }
 }

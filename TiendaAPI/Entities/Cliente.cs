@@ -12,5 +12,7 @@ namespace TiendaAPI.Entities
         public string Dui { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
+
+        public ICollection<Venta> Ventas { get; set; }
     }
 }
