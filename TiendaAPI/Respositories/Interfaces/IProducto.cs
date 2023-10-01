@@ -5,7 +5,7 @@ namespace TiendaAPI.Respositories.Interfaces
     public interface IProducto
     {
         //Crear Nuevo
-        Task<int> Crear(ProductoDTO producto);
+        Task<int> Crear(GuardarProductoDTO producto);
         //Traer los datos
         Task<ICollection<ProductoDTO>> Productos();
         //Buscar x id

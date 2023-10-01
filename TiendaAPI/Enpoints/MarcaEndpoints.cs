@@ -20,7 +20,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.Ok(marca);
-            }).WithTags("Marca").RequireAuthorization();
+            }).WithTags("Marcas").RequireAuthorization();
 
             app.MapPost("api/marca", async (MarcaDTO marca, IMarca _marca) =>
             {

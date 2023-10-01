@@ -18,9 +18,9 @@ namespace TiendaAPI.Respositories
             _mapper = mapper;
         }
 
-        public async Task<int> Crear(VentaDTO venta)
+        public async Task<int> Crear(GuardarVentaDTO venta)
         {
-            await _db.Ventas.AddAsync(_mapper.Map<VentaDTO, Venta>(venta));
+            await _db.Ventas.AddAsync(_mapper.Map<GuardarVentaDTO, Venta>(venta));
             return await Guardar();
         }
 

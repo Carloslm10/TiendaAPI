@@ -24,7 +24,7 @@ namespace TiendaAPI.Enpoints
                     return Results.Ok(venta);
             }).WithTags("Ventas").RequireAuthorization();
 
-            app.MapPost("api/venta", async (VentaDTO venta, IVenta _venta) => {
+            app.MapPost("api/venta", async (GuardarVentaDTO venta, IVenta _venta) => {
                 if (venta == null)
                     //codigo 400 Bad Request = La solisitud no se pudo
                     //porque bienen nulos

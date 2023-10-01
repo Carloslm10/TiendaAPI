@@ -21,4 +21,17 @@ namespace TiendaAPI.DTOs
         public ProductoDTO Producto { get; set; }
 
     }
+
+    public class GuardarVentaDTO
+    {
+        public int Id { get; set; }
+
+        public int Usuario_id { get; set; }
+
+        public int Cliente_id { get; set; }
+
+        public int Producto_id { get; set; }
+        public int Cantidad { get; set; }
+        public DateTime Fecha { get; set; }
+    }
 }

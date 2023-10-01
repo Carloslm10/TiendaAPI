@@ -5,7 +5,7 @@ namespace TiendaAPI.Enpoints
 {
     public static class CategoriaEndpoints
     {
-        public static void Add(this WebApplication app)
+        public static async void Add(this WebApplication app)
         {
             app.MapGet("api/categorias", async (ICategoria _categoria) =>
             {
@@ -22,7 +22,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.Ok(categoria);
-            }).WithTags("Categorias").RequireAuthorization();
+            }).WithTags("Categorias").AllowAnonymous();
 
             app.MapPost("api/categoria", async (CategoriaDTO categoria, ICategoria _categoria) =>
             {
@@ -31,7 +31,7 @@ namespace TiendaAPI.Enpoints
                 await _categoria.crear(categoria);
 
                 return Results.Created("api/categorias/{categoria.id}", categoria);
-            }).WithTags("Categorias");
+            }).WithTags("Categorias").AllowAnonymous();
 
             app.MapPut("api/categoria/{id}", async (int id, CategoriaDTO categoria, ICategoria _categoria) =>
             {
@@ -40,7 +40,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.Ok(resultado);
-            }).WithTags("Categorias").RequireAuthorization();
+            }).WithTags("Categorias").AllowAnonymous();
 
             app.MapDelete("api/categoria/{id}", async (int id, ICategoria _categoria) => {
                 var resultado = await _categoria.Eliminar(id);
@@ -48,7 +48,7 @@ namespace TiendaAPI.Enpoints
                     return Results.NotFound();
                 else
                     return Results.NoContent();
-            }).WithTags("Categorias").RequireAuthorization();
+            }).WithTags("Categorias").AllowAnonymous();
 
         }
     }

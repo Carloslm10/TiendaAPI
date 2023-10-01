@@ -9,6 +9,7 @@
             UsuarioEndpoints.Add(app);
             MarcaEndpoints.Add(app);
             CategoriaEndpoints.Add(app);
+            ProductoEnpoints.Add(app);
         }
     }
 }
