@@ -10,9 +10,9 @@ namespace TiendaAPI.Enpoints
             //Obtener todos los registros de la tabla
             app.MapGet("api/usuarios", async (IUsuario _usuario) =>
             {
-                var usuario = await _usuario.Usuarios();
+                var usuarios = await _usuario.Usuarios();
 
-                return Results.Ok();
+                return Results.Ok(usuarios);
             }).WithTags("Usuarios").AllowAnonymous();
 
             //Buscar por ID

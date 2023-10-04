@@ -18,7 +18,7 @@ namespace TiendaAPI.Enpoints
                 var cliente = await _cliente.Cliente(id);
                 if (cliente == null)
                     //codigo 404 Not Found - El recurso solicitado no existe
-                    return Results.NotFound();
+                    return Results.NotFound("No se encontro el Cliente: " + id);
                 else
                     //codigo 200 es Ok - Significa la sulicitud se realizo correctamente
                     return Results.Ok(cliente);
