@@ -50,5 +50,70 @@ namespace TiendaAPI.UnitTest
             //Assert (Afirmar)
             Assert.True(resultado == 1);
         }
+
+        [Fact]
+        public async void TestObtener()
+        {
+            //Arranque (Preparar)
+
+
+            //Act (Actuar)
+            var ventas = await _ventaRepository.Ventas();
+
+
+            //Assert (Afirmmar)
+            //Assert.True(clientes.Count > 0);
+            Assert.NotNull(ventas);
+        }
+
+        [Fact]
+        public async void TestObtenerXId()
+        {
+            //Arranque (Preparar)
+            int id = 1;
+
+            //Act (Actuar)
+            var venta = await _ventaRepository.Venta(id);
+
+
+            //Assert (Afirmmar)
+            //Assert.True(clientes.Count > 0);
+            Assert.NotNull(venta);
+        }
+
+        [Fact]
+        public async void TestModificar()
+        {
+            //Arranque (Preparar)
+            int id = 1;
+            var objecto = new VentaDTO();
+            //objecto.Id = id;
+            objecto.Usuario_id = 1;
+            objecto.Cliente_id = 1;
+            objecto.Producto_id = 1;
+            objecto.Cantidad = 1;
+
+            //Act (Actuar)
+            var resultado = await _ventaRepository.Modificar(id, objecto);
+
+
+            //Assert (Afirmmar)
+            Assert.Equal(1, resultado);
+        }
+
+
+        [Fact]
+        public async void TestEliminar()
+        {
+            //Arranque (Preparar)
+            int id = 1;
+
+            //Act (Actuar)
+            var resultado = await _ventaRepository.Eliminar(id);
+
+
+            //Assert (Afirmmar)
+            Assert.Equal(1, resultado);
+        }
     }
 }
