@@ -49,5 +49,70 @@ namespace TiendaAPI.UnitTest
         //    //Assert (Afirmmar)
         //    Assert.True(resultado == 1);
         //}
+
+        //[Fact]
+        //public async void TestObtener()
+        //{
+        //    //Arranque (Preparar)
+
+
+        //    //Act (Actuar)
+        //    var clientes = await _usuarioRepository.Usuarios();
+
+
+        //    //Assert (Afirmmar)
+        //    //Assert.True(clientes.Count > 0);
+        //    Assert.NotNull(clientes);
+        //}
+
+        //[Fact]
+        //public async void TestObtenerXId()
+        //{
+        //    //Arranque (Preparar)
+        //    int id = 1;
+
+        //    //Act (Actuar)
+        //    var usuario = await _usuarioRepository.Usuario(id);
+
+
+        //    //Assert (Afirmmar)
+        //    //Assert.True(clientes.Count > 0);
+        //    Assert.NotNull(usuario);
+        //}
+
+        //[Fact]
+        //public async void TestModificar()
+        //{
+        //    //Arranque (Preparar)
+        //    int id = 1;
+        //    var objecto = new UsuarioDTO();
+        //    //objecto.Id = id;
+        //    objecto.NombreUsuario = "Mario";
+        //    objecto.Clave = "1235";
+        //    objecto.Rol = "Administrador";
+
+
+        //    //Act (Actuar)
+        //    var resultado = await _usuarioRepository.Modificar(id, objecto);
+
+
+        //    //Assert (Afirmmar)
+        //    Assert.Equal(1, resultado);
+        //}
+
+
+        //[Fact]
+        //public async void TestEliminar()
+        //{
+        //    //Arranque (Preparar)
+        //    int id = 1;
+
+        //    //Act (Actuar)
+        //    var resultado = await _usuarioRepository.Eliminar(id);
+
+
+        //    //Assert (Afirmmar)
+        //    Assert.Equal(1, resultado);
+        //}
     }
 }
