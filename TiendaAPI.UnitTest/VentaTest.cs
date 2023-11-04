@@ -14,35 +14,35 @@ namespace TiendaAPI.UnitTest
 {
     public class VentaTest
     {
-        public readonly VentaRepository _ventaRepository;
+        private readonly VentaRepository _ventaRepository;
         public VentaTest()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer("Data Source = CRISTINA; Initial Catalog = ControlProductos; Integrated Security = True; Trust Server Certificate = True")
-                 .Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseSqlServer("server=LAPTOP-QV3Q6T02;Database=Tienda_Zapatos;user id=sa;Password=carlos12358;Encrypt=False; TrustServerCertificate=False;")
+                .Options;
 
             var dbContext = new ApplicationDbContext(options);
 
-            var configuration = new MapperConfiguration(cfg =>
+            var configurations = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingsProfiles>();
             });
 
-            var mapper = configuration.CreateMapper();
+            var mapper = configurations.CreateMapper();
 
             _ventaRepository = new VentaRepository(dbContext, mapper);
         }
 
         [Fact]
-
         public async void TestCrear()
         {
             //Arrange (preparar)
             var objecto = new GuardarVentaDTO();
-
             objecto.Usuario_id = 1;
-            objecto.Cliente_id = 1;
-            objecto.Producto_id = 1;
-            objecto.Cantidad = 1;
+            objecto.Cliente_id = 1002;
+            objecto.Producto_id = 2005;
+            objecto.Cantidad = 1032;
+            objecto.Fecha = DateTime.Now;
 
             //Act (Actuar)
             int resultado = await _ventaRepository.Crear(objecto);
@@ -70,7 +70,7 @@ namespace TiendaAPI.UnitTest
         public async void TestObtenerXId()
         {
             //Arranque (Preparar)
-            int id = 1;
+            int id = 2;
 
             //Act (Actuar)
             var venta = await _ventaRepository.Venta(id);
@@ -85,13 +85,14 @@ namespace TiendaAPI.UnitTest
         public async void TestModificar()
         {
             //Arranque (Preparar)
-            int id = 1;
+            int id = 1004;
             var objecto = new VentaDTO();
             //objecto.Id = id;
             objecto.Usuario_id = 1;
-            objecto.Cliente_id = 1;
-            objecto.Producto_id = 1;
-            objecto.Cantidad = 1;
+            objecto.Cliente_id = 1002;
+            objecto.Producto_id = 2005;
+            objecto.Cantidad = 8950;
+            objecto.Fecha = DateTime.Now;
 
             //Act (Actuar)
             var resultado = await _ventaRepository.Modificar(id, objecto);
@@ -106,7 +107,7 @@ namespace TiendaAPI.UnitTest
         public async void TestEliminar()
         {
             //Arranque (Preparar)
-            int id = 1;
+            int id = 1010;
 
             //Act (Actuar)
             var resultado = await _ventaRepository.Eliminar(id);

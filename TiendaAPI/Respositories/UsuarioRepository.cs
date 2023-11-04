@@ -84,7 +84,7 @@ namespace TiendaAPI.Respositories
             var jwt = new JwtSecurityToken(
                 issuer: _tokenSetting.Issuer,
                 audience: _tokenSetting.Audience,
-                expires: DateTime.Now.AddHours(1),
+                expires: DateTime.Now.AddHours(150),
                 signingCredentials: credenciales,
                 claims: claimsUsuarios
                 );

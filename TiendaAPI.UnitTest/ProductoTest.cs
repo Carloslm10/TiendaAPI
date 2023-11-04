@@ -110,7 +110,7 @@ namespace TiendaAPI.UnitTest
         public async void TestEliminar()
         {
             //Arranque (Preparar)
-            int id = 1;
+            int id = 1002;
 
             //Act (Actuar)
             var resultado = await _productoRepository.Eliminar(id);
