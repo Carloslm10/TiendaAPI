@@ -26,7 +26,7 @@ namespace TiendaAPI.Enpoints
             {
                 if (marca == null)
                     return Results.BadRequest();
-                await _marca.crear(marca);
+                await _marca.Crear(marca);
 
                 return Results.Created("api/marcas/{marca.id}", marca);
             }).WithTags("Marcas").RequireAuthorization();

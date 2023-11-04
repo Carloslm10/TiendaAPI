@@ -18,7 +18,7 @@ namespace TiendaAPI.Respositories
             _mapper = mapper;
         }
 
-        public async Task<int> crear(MarcaDTO marca)
+        public async Task<int> Crear(MarcaDTO marca)
         {
             await _db.Marcas.AddAsync(_mapper.Map<MarcaDTO, Marca>(marca));
             return await Guardar();

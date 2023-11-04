@@ -28,7 +28,7 @@ namespace TiendaAPI.Enpoints
             {
                 if (categoria == null)
                     return Results.BadRequest();
-                await _categoria.crear(categoria);
+                await _categoria.Crear(categoria);
 
                 return Results.Created("api/categorias/{categoria.id}", categoria);
             }).WithTags("Categorias").AllowAnonymous();

@@ -34,7 +34,7 @@ namespace TiendaAPI.Respositories
             return categoria;
         }
 
-        public async Task<int> crear(CategoriaDTO categoria)
+        public async Task<int> Crear(CategoriaDTO categoria)
         {
             await _db.Categorias.AddAsync(_mapper.Map<CategoriaDTO, Categoria>(categoria));
             return await Guardar();

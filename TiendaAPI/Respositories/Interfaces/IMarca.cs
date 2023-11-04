@@ -4,7 +4,7 @@ namespace TiendaAPI.Respositories.Interfaces
 {
     public interface IMarca
     {
-        Task<int> crear(MarcaDTO marca);
+        Task<int> Crear(MarcaDTO marca);
         Task<ICollection<MarcaDTO>> Marcas();
         Task<MarcaDTO> Marca(int id);
         Task<int> Modificar(int id, MarcaDTO marca);
